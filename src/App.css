@@ -10,6 +10,10 @@ body {
 
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .App-header {
@@ -42,7 +46,7 @@ main {
 .file-input {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   padding: 20px;
   border: 1px solid #ccc;
@@ -83,11 +87,11 @@ main {
 
 .results-section {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  flex-wrap: wrap;
   margin-top: 30px;
   gap: 20px;
   text-align: left;
-  flex-wrap: wrap;
 }
 
 .result-list {
@@ -95,7 +99,7 @@ main {
   border: 1px solid #dddfe2;
   border-radius: 8px;
   padding: 20px;
-  width: 45%;
+  flex: 1;
   min-width: 300px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -107,18 +111,38 @@ main {
   color: #1877f2;
 }
 
-.result-list ul {
+.user-list {
   list-style-type: none;
   padding: 0;
   max-height: 400px;
   overflow-y: auto;
+  margin-right: -10px;
+  padding-right: 10px;
+  scrollbar-width: thin;
 }
 
-.result-list li {
-  padding: 8px 0;
+.user-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.user-list::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.user-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
   border-bottom: 1px solid #f0f2f5;
 }
 
-.result-list li:last-child {
+.user-item:last-child {
   border-bottom: none;
+}
+
+.visit-button {
+  font-size: 0.8rem;
+  padding: 4px 12px;
 }

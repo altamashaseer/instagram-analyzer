@@ -24,7 +24,7 @@ function App() {
 
   const [notFollowingBack, setNotFollowingBack] = useState<string[]>([]);
   const [youDontFollowBack, setYouDontFollowBack] = useState<string[]>([]);
-  
+
   const [error, setError] = useState<string>('');
   const [hasCompared, setHasCompared] = useState<boolean>(false);
 
@@ -80,7 +80,7 @@ function App() {
     // Users who follow you, but you don't follow them back
     const youDontFollowBackList = [...followers].filter(user => !following.has(user));
     setYouDontFollowBack(youDontFollowBackList);
-    
+
     setHasCompared(true);
     setError('');
   };
@@ -95,24 +95,24 @@ function App() {
         <div className="upload-section">
           <div className="file-input">
             <label htmlFor="followers-file">Followers File (<code>followers_1.json</code>)</label>
-            <input 
+            <input
               id="followers-file"
-              type="file" 
+              type="file"
               accept=".json"
-              onChange={(e) => handleFileChange(e, 'followers')} 
+              onChange={(e) => handleFileChange(e, 'followers')}
             />
           </div>
           <div className="file-input">
             <label htmlFor="following-file">Following File (<code>following.json</code>)</label>
-            <input 
+            <input
               id="following-file"
-              type="file" 
+              type="file"
               accept=".json"
-              onChange={(e) => handleFileChange(e, 'following')} 
+              onChange={(e) => handleFileChange(e, 'following')}
             />
           </div>
         </div>
-        
+
         <button onClick={handleCompare} className="compare-button">
           Compare
         </button>
@@ -123,15 +123,29 @@ function App() {
           <div className="results-section">
             <div className="result-list">
               <h2>Don't Follow You Back ({notFollowingBack.length})</h2>
-              <ul>
-                {notFollowingBack.map(user => <li key={user}>{user}</li>)}
-              </ul>
+              <div className="user-list">
+                {notFollowingBack.map(user => (
+                  <div key={user} className="user-item">
+                    <span>{user}</span>
+                    <a href={`https://instagram.com/${user}`} target="_blank" rel="noopener noreferrer" className="visit-button">
+                      Visit
+                    </a>
+                  </div>
+                ))}
+              </div>
             </div>
             <div className="result-list">
               <h2>You Don't Follow Back ({youDontFollowBack.length})</h2>
-              <ul>
-                {youDontFollowBack.map(user => <li key={user}>{user}</li>)}
-              </ul>
+              <div className="user-list">
+                {youDontFollowBack.map(user => (
+                  <div key={user} className="user-item">
+                    <span>{user}</span>
+                    <a href={`https://instagram.com/${user}`} target="_blank" rel="noopener noreferrer" className="visit-button">
+                      Visit
+                    </a>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}
